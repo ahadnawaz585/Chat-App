@@ -1,5 +1,5 @@
 
-```markdown
+
 # Chat App
 
 Chat App is a real-time chat application built with Express.js, Socket.io, and TypeScript. It allows multiple users to join a chat room, exchange messages in real-time, and see the list of online users.
