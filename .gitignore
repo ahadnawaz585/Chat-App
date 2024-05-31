@@ -1,0 +1,17 @@
+# Node.js files
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Compiled output
+dist/
+
+# IDE/Editor files
+.vscode/
+.idea/
+
+# Compiled CSS files
+public/styles.css
+
+# Environment variables
+.env
