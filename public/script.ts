@@ -22,20 +22,23 @@ class ChatApp {
   }
 
   private requestName(): void {
-    const userName = prompt("Please enter your name:");
-    if (userName) {
-      this.userName = userName;
-      this.socket.emit('set name', this.userName);
-    } else {
-      alert("Name cannot be empty. Please refresh the page and enter your name again.");
+    let userName: string | null = null;
+    while (!userName) {
+      userName = prompt("Please enter your name:");
+      if (!userName) {
+        alert("Name cannot be empty. Please enter a valid name.");
+      }
     }
+    this.userName = userName;
+    this.socket.emit('set name', this.userName);
   }
 
   private handleSubmit(e: Event): void {
     e.preventDefault();
-    if (this.input.value) {
-      this.socket.emit('chat message', this.input.value);
-      this.addMessage('Me', this.input.value, true);
+    const message = this.input.value.trim();
+    if (message) {
+      this.socket.emit('chat message', message);
+      this.addMessage('Me', message, true);
       this.input.value = '';
     }
   }
@@ -66,4 +69,6 @@ class ChatApp {
   }
 }
 
-new ChatApp();
+document.addEventListener('DOMContentLoaded', () => {
+  new ChatApp();
+});
